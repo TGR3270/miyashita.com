@@ -1,0 +1,10 @@
+@import 'shared/variables.css';
+
+.base {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0 50px;
+  @media (--small-viewport) {
+    padding: 0;
+  }
+}

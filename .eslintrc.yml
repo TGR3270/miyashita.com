@@ -1,0 +1,30 @@
+extends:
+  - eslint:recommended
+  - plugin:react/recommended
+plugins:
+  - react
+rules:
+  semi:
+    - error
+    - always
+  quotes:
+    - error
+    - single
+  indent:
+    - error
+    - 2
+  arrow-parens:
+    - error
+    - as-needed
+  react/prop-types:
+    - off
+env:
+  node: true
+  browser: true
+  es6: true
+  commonjs: true
+parserOptions:
+  ecmaVersion: 2017
+  sourceType: module
+  ecmaFeatures:
+    jsx: true

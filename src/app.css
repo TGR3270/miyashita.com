@@ -1,0 +1,141 @@
+@import 'shared/variables.css';
+
+.base {
+  display: flex;
+  position: absolute;
+  min-height: 100%;
+  width: 100%;
+  flex-direction: column;
+}
+
+.main {
+  display: flex;
+  flex: 1;
+  box-sizing: border-box;
+}
+
+.header {
+  position: relative;
+  z-index: 1;
+}
+
+.transition-wrapper {
+  display: flex;
+  width: 100%;
+  flex: 1;
+}
+
+@font-face {
+  font-family: 'YuGothicNormalized';
+  font-weight: 100;
+  src: local('YuGothic-Light'), local('Yu Gothic Light');
+}
+@font-face {
+  font-family: 'YuGothicNormalized';
+  font-weight: 200;
+  src: local('YuGothic-Light'), local('Yu Gothic Light');
+}
+@font-face {
+  font-family: 'YuGothicNormalized';
+  font-weight: 300;
+  src: local('YuGothic-Regular'), local('Yu Gothic');
+}
+@font-face {
+  font-family: 'YuGothicNormalized';
+  font-weight: 400;
+  src: local('YuGothic-Medium'), local('Yu Gothic Medium'), local('YuGothic-Regular'),
+    local('Yu Gothic');
+}
+@font-face {
+  font-family: 'YuGothicNormalized';
+  font-weight: 500;
+  src: local('YuGothic-Medium'), local('Yu Gothic Medium'), local('YuGothic-Regular'),
+    local('Yu Gothic');
+}
+@font-face {
+  font-family: 'YuGothicNormalized';
+  font-weight: 600;
+  src: local('YuGothic-Bold'), local('Yu Gothic');
+}
+@font-face {
+  font-family: 'YuGothicNormalized';
+  font-weight: 700;
+  src: local('YuGothic-Bold'), local('Yu Gothic');
+}
+@font-face {
+  font-family: 'YuGothicNormalized';
+  font-weight: 800;
+  src: local('YuGothic-Bold'), local('Yu Gothic');
+}
+@font-face {
+  font-family: 'YuGothicNormalized';
+  font-weight: 900;
+  src: local('YuGothic-Bold'), local('Yu Gothic');
+}
+
+:global {
+  & * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  & html {
+    box-sizing: border-box;
+  }
+
+  & *,
+  & *::before,
+  & *::after {
+    box-sizing: inherit;
+  }
+
+  & html,
+  & body {
+    font-family: var(--fontFamily);
+    font-size: var(--fontSize);
+    color: var(--textColor);
+    background: var(--backgroundColor);
+
+    @media (--small-viewport) {
+      font-size: var(--fontSizeForMobile);
+    }
+  }
+
+  & input {
+    font-family: var(--fontFamily);
+    font-size: var(--fontSize);
+    color: var(--textColor);
+
+    @media (--small-viewport) {
+      font-size: var(--fontSizeForMobile);
+    }
+  }
+
+  & a {
+    color: inherit;
+    text-decoration: none;
+
+    &:hover,
+    &:active {
+      outline: none;
+    }
+  }
+
+  & p {
+    margin: 0;
+  }
+
+  & h1,
+  & h2,
+  & h3,
+  & h4,
+  & h5,
+  & h6 {
+    margin: 1em 0;
+
+    @media (--small-viewport) {
+      margin: 0.5em 0;
+    }
+  }
+}

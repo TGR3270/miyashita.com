@@ -1,0 +1,31 @@
+@import 'shared/variables.css';
+
+.base {
+  width: 100%;
+}
+
+.content-wrapper {
+  margin-top: -15px;
+  margin-bottom: 15px;
+
+  @media (--small-viewport) {
+    margin-top: 0;
+  }
+}
+
+.header-wrapper {
+  margin: 1rem;
+}
+
+.header {
+  margin: 0;
+  display: inline-block;
+}
+
+.more {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.75rem;
+  padding: 0 0.5em;
+  font-weight: normal;
+}
