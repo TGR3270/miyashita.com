@@ -10,14 +10,14 @@ import NoImagePath from '../assets/noimage.png';
 const ThumbnailCard = props => {
   const { item } = props;
   const date = item.date && new Date(item.date);
-  const isExternalURL = /^https?:\/\//.test(item.url);
+  const isExternalURL = /^https?:\/\//.test(item.permalink);
 
   return (
     <div className={styles.itemWrapper}>
       <Link
         className={styles.item}
-        to={isExternalURL ? null : item.url}
-        href={isExternalURL ? item.url : null}
+        to={isExternalURL ? null : item.permalink}
+        href={isExternalURL ? item.permalink : null}
       >
         <div
           className={styles.thumbnailImage}

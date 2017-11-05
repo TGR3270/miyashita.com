@@ -10,7 +10,7 @@ const MemberCard = props => {
   const status = `${info.category.split('_')[1]}${info.school_year || ''}`;
 
   return (
-    <Link className={styles.base} to="">
+    <Link className={styles.base} to={info.permalink}>
       <div className={styles.imageCard}>
         <div className={styles.imagePadding} />
         <div className={styles.image} style={{ backgroundImage: `url(${info.avatar})` }} />

@@ -23,7 +23,8 @@ async function getJSONFromFile(filePath) {
   }
   // Date
   const dateStr = config.date || (fileName.match(/^(\d+[/-]\d+[/-]\d+)/) || [])[1];
-  config.date = moment(dateStr, ['YYYY-MM-DD HH:mm Z', 'YYYY-MM-DD HH:mm', 'YYYY-MM-DD']).toDate();
+  const date = moment(dateStr, ['YYYY-MM-DD HH:mm Z', 'YYYY-MM-DD HH:mm', 'YYYY-MM-DD']);
+  Object.assign(config, { date: date.toDate() }, date.toObject());
   // Thumbnail
   if (!config.thumbnail) {
     visit(ast, 'image', node => {

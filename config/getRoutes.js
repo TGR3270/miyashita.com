@@ -3,7 +3,7 @@ import axios from 'axios';
 import orderBy from 'lodash.orderby';
 import getArticleList from './utils/getArticleList';
 
-const paths = {
+const filePaths = {
   news: path.resolve(__dirname, '../articles/news/**/*.md'),
   projects: path.resolve(__dirname, '../articles/projects/**/*.md'),
   members: path.resolve(__dirname, '../articles/members/**/*.md'),
@@ -11,9 +11,11 @@ const paths = {
 
 async function getRoutes() {
   const { data: posts } = await axios.get('https://jsonplaceholder.typicode.com/posts');
-  const newsList = await getArticleList(paths.news);
-  const projectList = await getArticleList(paths.projects);
-  const memberList = await getArticleList(paths.members);
+  const newsList = await getArticleList(filePaths.news, {
+    permalink: 'https://news.miyashita.com/:years/:months/:date/:title',
+  });
+  const projectList = await getArticleList(filePaths.projects, { permalink: '/projects/:title' });
+  const memberList = await getArticleList(filePaths.members, { permalink: '/members/:title' });
 
   return [
     {
