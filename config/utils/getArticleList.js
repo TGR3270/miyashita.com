@@ -1,6 +1,6 @@
 import glob from 'glob-promise';
 import getJSONFromFile from './getJSONFromFile';
-import { compile } from 'path-to-regexp';
+import pathToRegexp from 'path-to-regexp';
 
 async function getArticleList(globStr, defaultValues = {}) {
   const files = await glob(globStr);
@@ -9,7 +9,7 @@ async function getArticleList(globStr, defaultValues = {}) {
     .map(info => ({ ...defaultValues, ...info }))
     .map(info => ({
       ...info,
-      permalink: compile(info.permalink || '/:title')(info),
+      permalink: decodeURIComponent(pathToRegexp.compile(info.permalink || '/:title')(info)),
     }))
     .sort((a, b) => b.date - a.date);
   return results;

@@ -1,5 +1,4 @@
 import path from 'path';
-import axios from 'axios';
 import orderBy from 'lodash.orderby';
 import getArticleList from './utils/getArticleList';
 
@@ -10,44 +9,36 @@ const filePaths = {
 };
 
 async function getRoutes() {
-  const { data: posts } = await axios.get('https://jsonplaceholder.typicode.com/posts');
   const newsList = await getArticleList(filePaths.news, {
-    permalink: 'https://news.miyashita.com/:years/:months/:date/:title',
+    permalink: 'https://news.miyashita.com/:year/:month/:day/:title/',
   });
-  const projectList = await getArticleList(filePaths.projects, { permalink: '/projects/:title' });
-  const memberList = await getArticleList(filePaths.members, { permalink: '/members/:title' });
+  const projectList = await getArticleList(filePaths.projects, { permalink: '/projects/:title/' });
+  const memberList = await getArticleList(filePaths.members, { permalink: '/members/:title/' });
 
   return [
     {
       path: '/',
       component: 'src/containers/Home',
       getProps: () => ({
-        news: newsList.slice(0, 10),
-        projects: projectList.filter(i => i.visibleOnTopPage),
+        news: newsList.slice(0, 10).map(i => ({ ...i, content: null })),
+        projects: projectList
+          .filter(i => i.visibleOnTopPage)
+          .map(i => ({ ...i, date: null, content: null })),
         members: orderBy(
           memberList.filter(i => i.category !== '99_OB'),
           ['category', 'school_year', 'title'],
           ['asc', 'desc', 'asc'],
-        ),
+        ).map(i => ({ ...i, content: null })),
       }),
     },
+    ...memberList.map(info => ({
+      path: info.permalink,
+      component: 'src/containers/Member',
+      getProps: () => ({ member: info }),
+    })),
     {
       path: '/about',
       component: 'src/containers/About',
-    },
-    {
-      path: '/blog',
-      component: 'src/containers/Blog',
-      getProps: () => ({
-        posts,
-      }),
-      children: posts.map(post => ({
-        path: `/post/${post.id}`,
-        component: 'src/containers/Post',
-        getProps: () => ({
-          post,
-        }),
-      })),
     },
     {
       is404: true,

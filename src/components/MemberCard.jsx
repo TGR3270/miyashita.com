@@ -4,6 +4,7 @@ import { FaAngleRight } from 'react-icons/lib/fa';
 import styles from './MemberCard.css';
 
 import Link from './Link';
+import FaceImage from './FaceImage';
 
 const MemberCard = props => {
   const { info } = props;
@@ -11,9 +12,8 @@ const MemberCard = props => {
 
   return (
     <Link className={styles.base} to={info.permalink}>
-      <div className={styles.imageCard}>
-        <div className={styles.imagePadding} />
-        <div className={styles.image} style={{ backgroundImage: `url(${info.avatar})` }} />
+      <div className={styles.image}>
+        <FaceImage src={info.avatar} size="100%" />
       </div>
       <div className={styles.description}>
         <p className={styles.descriptionLine}>

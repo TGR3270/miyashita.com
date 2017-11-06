@@ -2,9 +2,9 @@ import React from 'react';
 import { getRouteProps } from 'react-static';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
 import { FaAngleRight } from 'react-icons/lib/fa';
+
 import styles from './Home.css';
 import headerImagePath from '../assets/header.jpg';
-
 import Link from '../components/Link';
 import HeaderImage from '../components/HeaderImage';
 import ContentWrapper from '../components/ContentWrapper';
@@ -19,7 +19,7 @@ class Home extends React.Component {
       <div className={styles.base}>
         <HeaderImage src={headerImagePath} alt="Miyashita Lab" />
         <div className={styles.contentWrapper}>
-          <ContentWrapper>
+          <ContentWrapper padding={15}>
             <h2 className={styles.headerWrapper}>
               <span className={styles.header}>最新情報</span>
               <Link href="https://news.miyashita.com" className={styles.more}>
