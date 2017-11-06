@@ -32,7 +32,7 @@ export async function startConfigServer() {
       routes.forEach(route => {
         const routePath = route.path
           .split('/')
-          .map(d => encodeURIComponent(d))
+          .map(d => encodeURI(d))
           .join('/');
         configApp.get(`/route${routePath}`, async (req, res, next) => {
           try {

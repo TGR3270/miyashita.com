@@ -4,7 +4,7 @@ import styles from './HeaderImage.css';
 
 const HeaderImage = props => (
   <div className={styles.base}>
-    <img className={styles.image} src={props.src} alt={props.alt} />
+    <img className={styles.image} style={{ objectFit: props.fit || 'contain' }} src={props.src} alt={props.alt} />
   </div>
 );
 

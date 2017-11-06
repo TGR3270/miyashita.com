@@ -36,6 +36,11 @@ async function getRoutes() {
       component: 'src/containers/Member',
       getProps: () => ({ member: info }),
     })),
+    ...projectList.map(info => ({
+      path: info.permalink,
+      component: 'src/containers/Project',
+      getProps: () => ({ project: info }),
+    })),
     {
       path: '/about',
       component: 'src/containers/About',

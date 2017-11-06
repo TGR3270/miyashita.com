@@ -7,6 +7,8 @@ import visit from 'unist-util-visit';
 import YAML from 'js-yaml';
 import moment from 'moment';
 
+import getYoutubeThumbnail from './getYoutubeThumbnail';
+
 const remark = Remark()
   .use(remarkFrontMatter)
   .use(remarkInlineLinks)
@@ -37,10 +39,13 @@ async function getJSONFromFile(filePath) {
     visit(ast, 'image', node => {
       if (node.url) {
         config.thumbnail = node.url;
-        return true;
+        return false;
       }
-      return false;
+      return true;
     });
+  }
+  if (!config.thumbnail) {
+    config.thumbnail = await getYoutubeThumbnail(ast);
   }
 
   return config;

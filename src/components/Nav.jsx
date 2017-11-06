@@ -14,7 +14,7 @@ const Nav = () => (
     <nav className={styles.base}>
       <div className={styles.wrapper}>
         <div className={classNames(styles.col, styles.rightCol)}>
-          <Link to="/">
+          <Link className={styles.logoImgWrapper} to="/">
             <img className={styles.logoImg} src={logoImgPath} alt="logo" />
           </Link>
         </div>
