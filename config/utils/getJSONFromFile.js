@@ -4,6 +4,7 @@ import Remark from 'remark';
 import remarkFrontMatter from 'remark-frontmatter';
 import remarkInlineLinks from 'remark-inline-links';
 import visit from 'unist-util-visit';
+import removePosition from 'unist-util-remove-position';
 import YAML from 'js-yaml';
 import moment from 'moment';
 
@@ -18,7 +19,7 @@ async function getJSONFromFile(filePath) {
   const fileName = path.basename(filePath);
 
   const ast = remark.parse(await fs.readFile(filePath, 'utf8'));
-  const config = { content: ast };
+  const config = { content: removePosition(ast, true) };
 
   // YAML Frontmatter
   if (ast.children[0].type === 'yaml') {

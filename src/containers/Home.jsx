@@ -30,7 +30,7 @@ class Home extends React.Component {
             <ThumbnailCardList items={news} />
             <h2 className={styles.headerWrapper}>
               <span className={styles.header}>プロジェクト</span>
-              <Link to="./projects" className={styles.more}>
+              <Link to="/projects/" className={styles.more}>
                 <span>すべて見る</span>
                 <FaAngleRight />
               </Link>
@@ -38,7 +38,7 @@ class Home extends React.Component {
             <ThumbnailCardList items={projects} />
             <h2 className={styles.headerWrapper}>
               <span className={styles.header}>メンバー</span>
-              <Link to="./members" className={styles.more}>
+              <Link to="/members/" className={styles.more}>
                 <span>すべて見る</span>
                 <FaAngleRight />
               </Link>
