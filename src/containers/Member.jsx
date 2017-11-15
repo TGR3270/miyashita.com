@@ -8,7 +8,7 @@ import MarkdownContent from '../components/MarkdownContent';
 import FaceImage from '../components/FaceImage';
 
 const Member = ({ member }) => (
-  <ContentWrapper padding="1rem">
+  <ContentWrapper style={{ padding: '1rem' }}>
     <div className={styles.base}>
       <div className={styles.image}>
         <FaceImage src={member.avatar} size={200} />

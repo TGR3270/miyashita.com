@@ -25,6 +25,10 @@ async function getJSONFromFile(filePath) {
     const { value: configStr } = ast.children.shift();
     Object.assign(config, YAML.safeLoad(configStr) || {}, config);
   }
+  // Category
+  if (!config.category) {
+    config.category = (config.categories || [])[0];
+  }
   // Date
   const dateStr = config.date || (fileName.match(/^(\d+[/-]\d+[/-]\d+)/) || [])[1];
   const date = moment(dateStr, ['YYYY-MM-DD HH:mm Z', 'YYYY-MM-DD HH:mm', 'YYYY-MM-DD']);

@@ -19,7 +19,7 @@ class Home extends React.Component {
       <div className={styles.base}>
         <HeaderImage src={headerImagePath} alt="Miyashita Lab" />
         <div className={styles.contentWrapper}>
-          <ContentWrapper padding={15}>
+          <ContentWrapper style={{ padding: 15 }}>
             <h2 className={styles.headerWrapper}>
               <span className={styles.header}>最新情報</span>
               <Link href="https://news.miyashita.com" className={styles.more}>

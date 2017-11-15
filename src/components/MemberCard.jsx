@@ -8,7 +8,10 @@ import FaceImage from './FaceImage';
 
 const MemberCard = props => {
   const { info } = props;
-  const status = `${info.category.split('_')[1]}${info.school_year || ''}`;
+  const status =
+    info.category === '99_OB'
+      ? `${info.year_of_graduation}年度卒業`
+      : `${info.category.split('_')[1]}${info.school_year || ''}`;
 
   return (
     <Link className={styles.base} to={info.permalink}>

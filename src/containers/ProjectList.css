@@ -1,0 +1,13 @@
+@import 'shared/variables.css';
+
+.base {
+  width: 100%;
+}
+
+.wrapper {
+  padding: 15px 0;
+}
+
+.header {
+  padding-bottom: 5px;
+}

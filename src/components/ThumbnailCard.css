@@ -14,6 +14,16 @@
   }
 }
 
+.wide {
+  padding: 5px 15px;
+
+  @media (--small-viewport) {
+    width: calc(100% / 2);
+    flex: 0 0 calc(100% / 2);
+    padding: 5px;
+  }
+}
+
 .item {
   display: block;
   position: relative;

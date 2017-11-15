@@ -14,4 +14,4 @@ HAMIGAKI-K.O.：歯ブラシ付きiPhoneによるオンライン対戦はiPhone�
 オンラインモードは朝の特定の時間に対戦する事で起床時のモチベーションを向上させる事も目標としています.
  森本浩尉, 宮下芳明.  HAMIGAKI-K.O.：歯ブラシ付きiPhoneによるオンライン対戦, エンタテインメントコンピューティング2009論文集,pp.183-184 (2009).
 
-<object width="560" height="340"><embed height="340" type="application/x-shockwave-flash" width="560" src="http://www.youtube.com/v/Cx52iGuT718&amp;hl=ja&amp;fs=1&amp;rel=0" allowfullscreen="true" allowscriptaccess="always"></object>
+<iframe width="420" height="315" src="https://www.youtube.com/embed/Cx52iGuT718" frameborder="0" allowfullscreen></iframe>

@@ -1,0 +1,25 @@
+@import 'shared/variables.css';
+
+.base {
+  width: 100%;
+}
+
+.title-wrapper {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 0 2rem;
+  padding-bottom: 1rem;
+}
+
+.title {
+  max-width: var(--maxWidth);
+  margin: auto;
+  line-height: 1.25;
+  border-bottom: 1px solid var(--gray);
+}
+
+.title-word {
+  display: inline-block;
+  white-space: pre;
+}

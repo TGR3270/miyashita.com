@@ -1,5 +1,6 @@
 import React from 'react';
 import { FaAngleLeft, FaAngleRight } from 'react-icons/lib/fa';
+import classnames from 'classnames';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
 import styles from './ThumbnailCardList.css';
 
@@ -37,27 +38,35 @@ class ThumbnailCardList extends React.Component {
   }
 
   render() {
-    const { items } = this.props;
+    const { items, wrap = false } = this.props;
+    const nowrap = !wrap;
     const { scroll } = this.state;
 
     return (
       <div className={styles.base}>
-        <div className={styles.scrollButton} onClick={this.onClickLeft}>
-          <FaAngleLeft className={this.isFirst ? styles.scrollButtonDisabled : null} />
-        </div>
+        {nowrap && (
+          <div className={styles.scrollButton} onClick={this.onClickLeft}>
+            <FaAngleLeft className={this.isFirst ? styles.scrollButtonDisabled : null} />
+          </div>
+        )}
         <div className={styles.outer}>
           <div
-            className={styles.inner}
+            className={classnames({
+              [styles.inner]: true,
+              [styles.innerWrap]: wrap,
+            })}
             style={{
               transform: `translateX(calc(-${100 * scroll / 3}%))`,
             }}
           >
-            {items.map(item => <ThumbnailCard key={item.title} item={item} />)}
+            {items.map(item => <ThumbnailCard key={item.title} item={item} wide={wrap} />)}
           </div>
         </div>
-        <div className={styles.scrollButton} onClick={this.onClickRight}>
-          <FaAngleRight className={this.isLast ? styles.scrollButtonDisabled : null} />
-        </div>
+        {nowrap && (
+          <div className={styles.scrollButton} onClick={this.onClickRight}>
+            <FaAngleRight className={this.isLast ? styles.scrollButtonDisabled : null} />
+          </div>
+        )}
       </div>
     );
   }

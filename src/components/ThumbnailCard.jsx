@@ -1,4 +1,5 @@
 import React from 'react';
+import classnames from 'classnames';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
 import { FaAngleRight } from 'react-icons/lib/fa';
 import format from 'date-fns/format';
@@ -8,12 +9,17 @@ import Link from './Link';
 import NoImagePath from '../assets/noimage.png';
 
 const ThumbnailCard = props => {
-  const { item } = props;
+  const { item, wide = false } = props;
   const date = item.date && new Date(item.date);
   const isExternalURL = /^https?:\/\//.test(item.permalink);
 
   return (
-    <div className={styles.itemWrapper}>
+    <div
+      className={classnames({
+        [styles.itemWrapper]: true,
+        [styles.wide]: wide,
+      })}
+    >
       <Link
         className={styles.item}
         to={isExternalURL ? null : item.permalink}
