@@ -1,4 +1,5 @@
 import path from 'path';
+import { isDate } from 'util';
 
 const webpackConfigs = [
   (config, args) => {
@@ -44,6 +45,17 @@ const webpackConfigs = [
         oneOf: [jsLoader, cssLoader, fileLoader],
       },
     ];
+
+    // Use Preact
+    if (!isDev) {
+      config.resolve.alias = Object.assign(config.resolve.alias || {}, {
+        react: 'preact-compat',
+        'react-dom': 'preact-compat',
+        'create-react-class': 'preact-compat/lib/create-react-class',
+        'preact-compat': 'preact-compat/dist/preact-compat',
+      });
+    }
+
     return config;
   },
 ];

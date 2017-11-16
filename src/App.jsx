@@ -10,19 +10,19 @@ import styles from './app.css';
 
 const App = () => (
   <Router>
-    <ScrollToTop>
-      <div className={styles.base}>
-        <header className={styles.header}>
-          <Nav />
-        </header>
-        <main className={styles.main}>
+    <div className={styles.base}>
+      <header className={styles.header}>
+        <Nav />
+      </header>
+      <main className={styles.main}>
+        <ScrollToTop>
           <Routes />
-        </main>
-        <footer>
-          <Footer />
-        </footer>
-      </div>
-    </ScrollToTop>
+        </ScrollToTop>
+      </main>
+      <footer>
+        <Footer />
+      </footer>
+    </div>
   </Router>
 );
 

@@ -14,7 +14,7 @@ export default App;
 if (typeof document !== 'undefined') {
   const onInsertCss = styles => styles._insertCss();
   const render = Comp => {
-    ReactDOM.hydrate(
+    ReactDOM.render(
       <AppContainer>
         <WithStylesContext onInsertCss={onInsertCss}>
           <Comp />
