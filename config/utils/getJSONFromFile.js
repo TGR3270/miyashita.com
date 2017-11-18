@@ -3,6 +3,8 @@ import path from 'path';
 import Remark from 'remark';
 import remarkFrontMatter from 'remark-frontmatter';
 import remarkInlineLinks from 'remark-inline-links';
+import remarkToRehype from 'remark-rehype';
+import rehypeRaw from 'rehype-raw';
 import visit from 'unist-util-visit';
 import removePosition from 'unist-util-remove-position';
 import YAML from 'js-yaml';
@@ -13,19 +15,25 @@ import getYoutubeThumbnail from './getYoutubeThumbnail';
 const remark = Remark()
   .use(remarkFrontMatter)
   .use(remarkInlineLinks)
+  .use(remarkToRehype, { allowDangerousHTML: true })
+  .use(rehypeRaw)
   .freeze();
 
 async function getJSONFromFile(filePath) {
   const fileName = path.basename(filePath);
+  const config = {};
 
   const ast = remark.parse(await fs.readFile(filePath, 'utf8'));
-  const config = { content: removePosition(ast, true) };
 
   // YAML Frontmatter
   if (ast.children[0].type === 'yaml') {
     const { value: configStr } = ast.children.shift();
     Object.assign(config, YAML.safeLoad(configStr) || {}, config);
   }
+
+  // MDAST to HAST
+  Object.assign(config, { content: removePosition(await remark.run(ast), true) });
+
   // Category
   if (!config.category) {
     config.category = (config.categories || [])[0];
@@ -50,7 +58,7 @@ async function getJSONFromFile(filePath) {
     });
   }
   if (!config.thumbnail) {
-    config.thumbnail = await getYoutubeThumbnail(ast);
+    config.thumbnail = await getYoutubeThumbnail(config.content);
   }
 
   return config;

@@ -1,22 +1,16 @@
 import url from 'url';
 import path from 'path';
-import rehype from 'rehype';
 import visit from 'unist-util-visit';
 
 export default async function getYoutubeThumbnail(ast) {
   let youtubeUrl = null;
 
-  visit(ast, 'html', node => {
-    let continueFlag = true;
-    const ast = rehype.parse(node.value);
-    visit(ast, 'element', node => {
-      if (node.tagName === 'iframe' && /youtube\.com/.test(node.properties.src)) {
-        youtubeUrl = node.properties.src;
-        continueFlag = false;
-      }
-      return continueFlag;
-    });
-    return continueFlag;
+  visit(ast, 'element', node => {
+    if (node.tagName === 'iframe' && /youtube\.com/.test(node.properties.src)) {
+      youtubeUrl = node.properties.src;
+      return false;
+    }
+    return true;
   });
 
   if (!youtubeUrl) {

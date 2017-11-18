@@ -5,7 +5,7 @@ const renderToHtml = (render, Component, meta) => {
   const css = new Set();
   const markup = render(
     <WithStylesContext onInsertCss={styles => css.add(styles._getCss())}>
-      <Component />,
+      <Component />
     </WithStylesContext>,
   );
   meta.styles = [...css].join('');

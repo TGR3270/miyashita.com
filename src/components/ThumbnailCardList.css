@@ -11,7 +11,7 @@
   width: 50px;
   font-size: 2em;
   cursor: pointer;
-  flex: 0 0 50px;
+  flex: 0 0 auto;
   text-align: center;
   justify-content: center;
   align-content: center;
@@ -31,7 +31,7 @@
 }
 
 .outer {
-  flex: auto;
+  flex: 1 1 auto;
   overflow: hidden;
   margin: -5px 0;
   padding-bottom: 5px;
@@ -55,7 +55,8 @@
 
     &::after {
       content: '';
-      flex: 0 0 15px;
+      width: 15px;
+      flex: 0 0 auto;
     }
   }
 }

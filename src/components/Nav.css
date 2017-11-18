@@ -19,12 +19,13 @@
 
 .col {
   display: flex;
-  flex: 1 0 50%;
+  width: 50%;
+  flex: 1 0 auto;
   height: 3em;
   align-items: center;
 
   @media (--small-viewport) {
-    flex: 1 0 100%;
+    width: 100%;
   }
 }
 
@@ -54,7 +55,8 @@
 
 .search-input-wrapper {
   min-width: calc(var(--maxWidth) / 4 - 15px);
-  flex: 0 1 320px;
+  width: 320px;
+  flex: 0 1 auto;
 
   @media (--small-viewport) {
     min-width: initial;

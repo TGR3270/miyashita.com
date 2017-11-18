@@ -8,6 +8,7 @@ import logoImgPath from '../assets/logo.png';
 
 import Link from './Link';
 import SearchInput from './SearchInput';
+import OptimizeImage from './OptimizeImage';
 
 const Nav = () => (
   <Sticky>
@@ -15,7 +16,7 @@ const Nav = () => (
       <div className={styles.wrapper}>
         <div className={classNames(styles.col, styles.rightCol)}>
           <Link className={styles.logoImgWrapper} to="/">
-            <img className={styles.logoImg} src={logoImgPath} alt="logo" />
+            <OptimizeImage className={styles.logoImg} src={logoImgPath} alt="logo" />
           </Link>
         </div>
         <div className={classNames(styles.col, styles.leftCol)}>

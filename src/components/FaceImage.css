@@ -21,4 +21,6 @@
   background-size: cover;
   background-position: top center;
   background-repeat: no-repeat;
+  object-fit: cover;
+  object-position: top center;
 }

@@ -79,10 +79,6 @@ async function getRoutes() {
       getProps: () => ({ article: info }),
     })),
     {
-      path: '/about',
-      component: 'src/containers/About',
-    },
-    {
       is404: true,
       component: 'src/containers/404',
     },

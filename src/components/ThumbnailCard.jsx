@@ -6,6 +6,7 @@ import format from 'date-fns/format';
 import styles from './ThumbnailCard.css';
 
 import Link from './Link';
+import OptimizeImage from './OptimizeImage';
 import NoImagePath from '../assets/noimage.png';
 
 const ThumbnailCard = props => {
@@ -25,12 +26,13 @@ const ThumbnailCard = props => {
         to={isExternalURL ? null : item.permalink}
         href={isExternalURL ? item.permalink : null}
       >
-        <div
-          className={styles.thumbnailImage}
-          style={{
-            backgroundImage: `url(${item.thumbnail || NoImagePath})`,
-          }}
-        />
+        <div className={styles.thumbnailImageWrapper}>
+          <OptimizeImage
+            className={styles.thumbnailImage}
+            src={item.thumbnail || NoImagePath}
+            width={350}
+          />
+        </div>
         {date && (
           <p className={styles.datetime}>
             <small>

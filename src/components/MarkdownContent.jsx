@@ -1,18 +1,27 @@
 import React from 'react';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
 import unified from 'unified';
-import remarkHtml from 'remark-html';
+import reactRenderer from 'rehype-react';
 
 import styles from './MarkdownContent.css';
+import AwesomeIframe from './AwesomeIframe';
+import OptimizeImage from './OptimizeImage';
+import Link from './Link';
 
 const processor = unified()
-  .use(remarkHtml)
+  .use(reactRenderer, {
+    createElement: React.createElement,
+    components: {
+      iframe: AwesomeIframe,
+      img: OptimizeImage,
+      a: Link,
+    },
+  })
   .freeze();
 
-const MarkdownContent = props => (
-  <div className={styles.markdownBody}>
-    <div dangerouslySetInnerHTML={{ __html: props.html || processor.stringify(props.ast) }} />
-  </div>
-);
+const MarkdownContent = props => {
+  const MarkdownJSX = processor().stringify(props.ast);
+  return <div className={styles.markdownBody}>{MarkdownJSX}</div>;
+};
 
 export default withStyles(styles)(MarkdownContent);

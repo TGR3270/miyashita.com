@@ -1,3 +1,24 @@
 {
-  "extends": "react-static/.babelrc"
+  "presets": [
+    "stage-0",
+    [
+      "env",
+      {
+        "targets": {
+          "browsers": ["last 2 versions", "safari >= 10"],
+          "node": "current"
+        },
+        "exclude": ["transform-regenerator"],
+        "useBuiltIns": true
+      }
+    ],
+    "react"
+  ],
+  "ignore": "app.static.js",
+  "plugins": ["fast-async"],
+  "env": {
+    "development": {
+      "plugins": ["react-hot-loader/babel", "fast-async"]
+    }
+  }
 }

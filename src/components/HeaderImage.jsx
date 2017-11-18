@@ -4,6 +4,7 @@ import withStyles from 'isomorphic-style-loader/lib/withStyles';
 import styles from './HeaderImage.css';
 
 import AutoTextWrap from './AutoTextWrap';
+import OptimizeImage from './OptimizeImage';
 
 const HeaderImage = ({ src, fit = 'contain', alt, title = null, blur = true }) => {
   const image = (
@@ -15,7 +16,12 @@ const HeaderImage = ({ src, fit = 'contain', alt, title = null, blur = true }) =
         height: fit === 'cover' ? '100%' : 'auto',
       }}
     >
-      <img className={styles.image} style={{ objectFit: fit || 'contain' }} src={src} alt={alt} />
+      <OptimizeImage
+        className={styles.image}
+        style={{ objectFit: fit || 'contain' }}
+        src={src}
+        alt={alt}
+      />
     </div>
   );
   if (!title) {
