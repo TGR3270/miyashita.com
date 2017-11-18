@@ -1,9 +1,14 @@
 import path from 'path';
+import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
+import LodashModuleReplacementPlugin from 'lodash-webpack-plugin';
 
 const webpackConfigs = [
   (config, args) => {
     const { stage, defaultLoaders: { jsLoader, fileLoader } } = args;
     const isDev = stage === 'dev';
+    const isProd = stage === 'prod';
+    const isNode = stage === 'node';
+
     const cssLoader = {
       test: /\.css$/,
       use: [
@@ -53,6 +58,23 @@ const webpackConfigs = [
         'create-react-class': 'preact-compat/lib/create-react-class',
         'preact-compat': 'preact-compat/dist/preact-compat',
       });
+    }
+
+    if (isProd) {
+      // Analytics
+      config.plugins.push(
+        new BundleAnalyzerPlugin({
+          analyzerMode: 'static',
+          reportFilename: path.resolve(__dirname, '../analytics/report.html'),
+          defaultSizes: 'parsed',
+          openAnalyzer: false,
+          generateStatsFile: true,
+          statsFilename: path.resolve(__dirname, '../analytics/stats.json'),
+          statsOptions: null,
+          logLevel: 'info',
+        }),
+      );
+      config.plugins.push(new LodashModuleReplacementPlugin());
     }
 
     return config;

@@ -67,6 +67,17 @@
   src: local('YuGothic-Bold'), local('Yu Gothic');
 }
 
+@font-face {
+  font-family: 'FontAwesome';
+  src: url('./assets/fonts/fontawesome-shrink.eot');
+  src: url('./assets/fonts/fontawesome-shrink.eot') format('embedded-opentype'),
+    url('./assets/fonts/fontawesome-shrink.ttf') format('truetype'),
+    url('./assets/fonts/fontawesome-shrink.woff') format('woff'),
+    url('./assets/fonts/fontawesome-shrink.svg') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
 :global {
   & * {
     box-sizing: border-box;
@@ -118,5 +129,34 @@
 
   & p {
     margin: 0;
+  }
+
+  /* Font Awesome */
+  & .fa {
+    /* use !important to prevent issues with browser extensions that change fonts */
+    font-family: 'FontAwesome' !important;
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  & .fa-search:before {
+    content: '\f002';
+  }
+  & .fa-external-link:before {
+    content: '\f08e';
+  }
+  & .fa-angle-left:before {
+    content: '\f104';
+  }
+  & .fa-angle-right:before {
+    content: '\f105';
   }
 }

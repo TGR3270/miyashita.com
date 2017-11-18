@@ -1,5 +1,5 @@
 import React from 'react';
-import { FaAngleLeft, FaAngleRight } from 'react-icons/lib/fa';
+import FontAwesome from 'react-fontawesome';
 import classnames from 'classnames';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
 import styles from './ThumbnailCardList.css';
@@ -46,7 +46,10 @@ class ThumbnailCardList extends React.Component {
       <div className={styles.base}>
         {nowrap && (
           <div className={styles.scrollButton} onClick={this.onClickLeft}>
-            <FaAngleLeft className={this.isFirst ? styles.scrollButtonDisabled : null} />
+            <FontAwesome
+              name="angle-left"
+              className={this.isFirst ? styles.scrollButtonDisabled : null}
+            />
           </div>
         )}
         <div className={styles.outer}>
@@ -64,7 +67,10 @@ class ThumbnailCardList extends React.Component {
         </div>
         {nowrap && (
           <div className={styles.scrollButton} onClick={this.onClickRight}>
-            <FaAngleRight className={this.isLast ? styles.scrollButtonDisabled : null} />
+            <FontAwesome
+              name="angle-right"
+              className={this.isLast ? styles.scrollButtonDisabled : null}
+            />
           </div>
         )}
       </div>

@@ -9,13 +9,13 @@
           "node": "current"
         },
         "exclude": ["transform-regenerator"],
-        "useBuiltIns": true
+        "useBuiltIns": false
       }
     ],
     "react"
   ],
   "ignore": "app.static.js",
-  "plugins": ["fast-async"],
+  "plugins": ["lodash", "fast-async"],
   "env": {
     "development": {
       "plugins": ["react-hot-loader/babel", "fast-async"]

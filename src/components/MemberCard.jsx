@@ -1,6 +1,6 @@
 import React from 'react';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
-import { FaAngleRight } from 'react-icons/lib/fa';
+import FontAwesome from 'react-fontawesome';
 import styles from './MemberCard.css';
 
 import Link from './Link';
@@ -25,7 +25,7 @@ const MemberCard = props => {
         <p className={styles.descriptionLine}>
           <span className={styles.name}>
             <span>{info.title}</span>
-            <FaAngleRight />
+            <FontAwesome name="angle-right" />
           </span>
         </p>
       </div>

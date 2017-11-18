@@ -1,7 +1,7 @@
 import React from 'react';
 import { getRouteProps } from 'react-static';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
-import { FaAngleRight } from 'react-icons/lib/fa';
+import FontAwesome from 'react-fontawesome';
 
 import styles from './Home.css';
 import headerImagePath from '../assets/header.jpg';
@@ -24,7 +24,7 @@ class Home extends React.Component {
               <span className={styles.header}>最新情報</span>
               <Link href="https://news.miyashita.com" className={styles.more}>
                 <span>すべて見る</span>
-                <FaAngleRight />
+                <FontAwesome name="angle-right" />
               </Link>
             </h2>
             <ThumbnailCardList items={news} />
@@ -32,7 +32,7 @@ class Home extends React.Component {
               <span className={styles.header}>プロジェクト</span>
               <Link to="/projects/" className={styles.more}>
                 <span>すべて見る</span>
-                <FaAngleRight />
+                <FontAwesome name="angle-right" />
               </Link>
             </h2>
             <ThumbnailCardList items={projects} />
@@ -40,7 +40,7 @@ class Home extends React.Component {
               <span className={styles.header}>メンバー</span>
               <Link to="/members/" className={styles.more}>
                 <span>すべて見る</span>
-                <FaAngleRight />
+                <FontAwesome name="angle-right" />
               </Link>
             </h2>
             <MemberCardList members={members} />
