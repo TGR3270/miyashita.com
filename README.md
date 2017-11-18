@@ -1,10 +1,24 @@
-# React-Static - Basic Example
+# [miyashita.com](https://miyashita.com)
 
-This example is the most basic version of react-static available. It includes:
-- Babel
-- CSS imports
-- Image imports
-- File imports
-- Automatic Routing
+## Requirements
+- Node.js >= v8
 
-To get started, run `react-static create` and use the `basic` template.
+## Install
+```bash
+yarn install
+```
+
+## Usage
+
+### Watch
+```bash
+yarn start
+```
+
+### Build
+```bash
+yarn build
+```
+
+## License
+(c) Miyashita Lab
