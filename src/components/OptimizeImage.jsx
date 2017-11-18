@@ -121,7 +121,7 @@ const OptimizeImage = ({ src, width, height, alt, ...rest }) => {
   return (
     <picture>
       {webp && <source type="image/webp" srcSet={webp} />}
-      <img {...rest} src={raw} alt={alt} />
+      <img {...rest} src={raw} alt={alt || 'image'} />
     </picture>
   );
 };

@@ -14,7 +14,11 @@ class PrefetchWhenSeen extends _PrefetchWhenSeen {
 
 const LinkWrapper = props => {
   if (!props.to) {
-    return <a {...props}>{props.children}</a>;
+    return (
+      <a target="_blank" {...props} rel="noopener noreferrer">
+        {props.children}
+      </a>
+    );
   }
   const { to, ...rest } = props;
   return (
