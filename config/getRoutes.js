@@ -6,7 +6,7 @@ const filePaths = {
   news: path.resolve(__dirname, '../articles/news/**/*.md'),
   projects: path.resolve(__dirname, '../articles/projects/**/*.md'),
   members: path.resolve(__dirname, '../articles/members/**/*.md'),
-  others: path.resolve(__dirname, '../articles/others/**/*.md'),
+  articles: path.resolve(__dirname, '../articles/articles/**/*.md'),
 };
 
 async function getRoutes() {
@@ -15,7 +15,7 @@ async function getRoutes() {
   });
   const projectList = await getArticleList(filePaths.projects, { permalink: '/projects/:title/' });
   const memberList = await getArticleList(filePaths.members, { permalink: '/members/:title/' });
-  const othersList = await getArticleList(filePaths.others);
+  const othersList = await getArticleList(filePaths.articles);
 
   const projectCategories = Array.from(new Set(projectList.map(p => p.category)));
   const projectListGroupByCategories = {};
@@ -30,6 +30,7 @@ async function getRoutes() {
     ['category', 'school_year', 'title'],
     ['asc', 'desc', 'asc'],
   ).map(i => ({ ...i, content: null }));
+
   const OBMemberList = orderBy(
     memberList.filter(i => i.category === '99_OB'),
     ['year_of_graduation', 'title'],
