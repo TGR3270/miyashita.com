@@ -11,7 +11,7 @@ const filePaths = {
 
 async function getRoutes() {
   const newsList = await getArticleList(filePaths.news, {
-    permalink: 'https://news.miyashita.com/:year/:month/:day/:title/',
+    permalink: '/news/:year/:month/:day/:title/',
   });
   const projectList = await getArticleList(filePaths.projects, { permalink: '/projects/:title/' });
   const memberList = await getArticleList(filePaths.members, { permalink: '/members/:title/' });
@@ -68,6 +68,11 @@ async function getRoutes() {
       path: info.permalink,
       component: 'src/containers/Member',
       getProps: () => ({ member: info }),
+    })),
+    ...newsList.map(info => ({
+      path: info.permalink,
+      component: 'src/containers/News',
+      getProps: () => ({ news: info }),
     })),
     ...projectList.map(info => ({
       path: info.permalink,
