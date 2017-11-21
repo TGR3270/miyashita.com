@@ -1,0 +1,7 @@
+@import 'shared/variables.css';
+
+.base {
+  width: 100%;
+  padding: 0.5em;
+  text-align: right;
+}

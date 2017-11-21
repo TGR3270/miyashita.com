@@ -8,7 +8,7 @@ import ContentWrapper from '../components/ContentWrapper';
 import HeaderImage from '../components/HeaderImage';
 import MemberCardList from '../components/MemberCardList';
 
-const MemberList = ({ currentMembers, OBMembers }) => (
+const MemberList = ({ page: { currentMembers, OBMembers } }) => (
   <div className={styles.base}>
     <HeaderImage fit="cover" blur={false} src={imageUrl} title="メンバー" />
 

@@ -7,15 +7,15 @@ import ContentWrapper from '../components/ContentWrapper';
 import MarkdownContent from '../components/MarkdownContent';
 import FaceImage from '../components/FaceImage';
 
-const Member = ({ member }) => (
+const Member = ({ page }) => (
   <ContentWrapper style={{ padding: '1rem' }}>
     <div className={styles.base}>
       <div className={styles.image}>
-        <FaceImage src={member.avatar} size={200} />
+        <FaceImage src={page.avatar} size={200} />
       </div>
       <div className={styles.content}>
-        <h1>{member.title}</h1>
-        <MarkdownContent ast={member.content} />
+        <h1>{page.title}</h1>
+        <MarkdownContent ast={page.content} />
       </div>
     </div>
   </ContentWrapper>

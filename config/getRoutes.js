@@ -42,47 +42,56 @@ async function getRoutes() {
       path: '/',
       component: 'src/containers/Home',
       getProps: () => ({
-        news: newsList.slice(0, 10).map(i => ({ ...i, content: null })),
-        projects: projectList
-          .filter(i => i.visibleOnTopPage)
-          .map(i => ({ ...i, date: null, content: null })),
-        members: currentMemberList,
+        page: {
+          title: '',
+          news: newsList.slice(0, 10).map(i => ({ ...i, content: null })),
+          projects: projectList
+            .filter(i => i.visibleOnTopPage)
+            .map(i => ({ ...i, date: null, content: null })),
+          members: currentMemberList,
+        },
       }),
     },
     {
       path: '/members',
       component: 'src/containers/MemberList',
       getProps: () => ({
-        currentMembers: currentMemberList,
-        OBMembers: OBMemberList,
+        page: {
+          title: 'メンバー',
+          currentMembers: currentMemberList,
+          OBMembers: OBMemberList,
+        },
       }),
     },
     {
       path: '/projects',
       component: 'src/containers/ProjectList',
       getProps: () => ({
-        projectsGroupByCategories: projectListGroupByCategories,
+        page: {
+          title: 'プロジェクト',
+          projectsGroupByCategories: projectListGroupByCategories,
+        },
       }),
     },
     ...memberList.map(info => ({
       path: info.permalink,
       component: 'src/containers/Member',
-      getProps: () => ({ member: info }),
+      getProps: () => ({ page: info }),
     })),
     ...newsList.map(info => ({
       path: info.permalink,
       component: 'src/containers/News',
-      getProps: () => ({ news: info }),
+      getProps: () => ({ page: info }),
     })),
     ...projectList.map(info => ({
       path: info.permalink,
       component: 'src/containers/Article',
-      getProps: () => ({ article: info }),
+      getProps: () => ({ page: info }),
     })),
     ...othersList.map(info => ({
       path: info.permalink,
       component: 'src/containers/Article',
-      getProps: () => ({ article: info }),
+      getProps: () => ({ page: info }),
     })),
     {
       is404: true,

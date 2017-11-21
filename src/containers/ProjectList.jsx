@@ -7,7 +7,7 @@ import HeaderImage from '../components/HeaderImage';
 import ContentWrapper from '../components/ContentWrapper';
 import ThumbnailCardList from '../components/ThumbnailCardList';
 
-const ProjectList = ({ projectsGroupByCategories }) => {
+const ProjectList = ({ page: { projectsGroupByCategories } }) => {
   const categories = Object.keys(projectsGroupByCategories).sort((a, b) => a.localeCompare(b));
   const categoryJSXList = [];
 

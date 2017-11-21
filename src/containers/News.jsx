@@ -6,17 +6,14 @@ import styles from './News.css';
 import NewsHeader from '../components/NewsHeader';
 import ContentWrapper from '../components/ContentWrapper';
 import MarkdownContent from '../components/MarkdownContent';
+import SocialButtonList from '../components/SocialButtonList';
 
-const News = ({ news }) => (
+const News = ({ page }) => (
   <div className={styles.base}>
-    <NewsHeader news={news} />
-    <ContentWrapper
-      style={{
-        padding: '1rem',
-        paddingBottom: '2rem',
-      }}
-    >
-      <MarkdownContent ast={news.content} />
+    <NewsHeader page={page} />
+    <ContentWrapper style={{ paddingTop: 0 }}>
+      <SocialButtonList />
+      <MarkdownContent ast={page.content} />
     </ContentWrapper>
   </div>
 );

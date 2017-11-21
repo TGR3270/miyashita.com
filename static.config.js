@@ -3,12 +3,18 @@ import renderToHtml from './config/renderToHtml';
 import webpack from './config/webpack';
 import getRoutes from './config/getRoutes';
 
+const siteRoot = 'https://miyashita.com';
+
 export default {
   Document,
   renderToHtml,
   webpack,
   getSiteProps: () => ({
-    title: 'React Static',
+    site: {
+      title: 'Miyashita Lab',
+      root: siteRoot,
+    },
   }),
+  siteRoot,
   getRoutes,
 };
