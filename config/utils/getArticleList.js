@@ -2,6 +2,7 @@ import glob from 'glob-promise';
 import getJSONFromFile from './getJSONFromFile';
 import pathToRegexp from 'path-to-regexp';
 import sanitize from 'sanitize-filename';
+import slugize from 'hexo-util/lib/slugize';
 
 async function getArticleList(globStr, defaultValues = {}) {
   const files = await glob(globStr);
@@ -13,7 +14,9 @@ async function getArticleList(globStr, defaultValues = {}) {
       permalink: decodeURIComponent(
         pathToRegexp.compile(info.permalink || '/:title')({
           ...info,
-          title: sanitize(info.title, { replacement: '-' }),
+          title: sanitize(slugize(info.title, { separator: '-', transform: 1 }), {
+            replacement: '-',
+          }),
         }),
       ),
     }))
