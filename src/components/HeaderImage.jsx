@@ -11,8 +11,6 @@ const HeaderImage = ({ src, fit = 'contain', alt, title = null, blur = true }) =
     <div
       className={styles.base}
       style={{
-        backgroundImage: `url(${src})`,
-        backgroundSize: fit || 'contain',
         height: fit === 'cover' ? '100%' : 'auto',
       }}
     >
