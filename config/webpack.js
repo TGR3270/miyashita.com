@@ -1,10 +1,17 @@
 import path from 'path';
-import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
+import {
+  BundleAnalyzerPlugin
+} from 'webpack-bundle-analyzer';
 import LodashModuleReplacementPlugin from 'lodash-webpack-plugin';
 
 const webpackConfigs = [
   (config, args) => {
-    const { stage, defaultLoaders: { jsLoader, fileLoader } } = args;
+    const {
+      stage,
+      defaultLoaders: {
+        jsLoader
+      }
+    } = args;
     const isDev = stage === 'dev';
     const isProd = stage === 'prod';
     const isNode = stage === 'node';
@@ -44,11 +51,17 @@ const webpackConfigs = [
       ],
     };
 
-    config.module.rules = [
-      {
-        oneOf: [jsLoader, cssLoader, fileLoader],
+    const fileLoader = {
+      loader: 'file-loader',
+      exclude: [/\.js$/, /\.html$/, /\.json$/, /\.ejs$/],
+      options: {
+        name: 'static/[name].[hash:8].[ext]',
       },
-    ];
+    };
+
+    config.module.rules = [{
+      oneOf: [jsLoader, cssLoader, fileLoader],
+    }];
 
     // Use Preact
     if (!isDev) {
