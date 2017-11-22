@@ -142,7 +142,7 @@ async function getRoutes() {
     })),
     {
       is404: true,
-      component: 'src/containers/404',
+      component: 'src/containers/NotFound',
     },
   ];
 }
