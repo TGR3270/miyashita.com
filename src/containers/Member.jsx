@@ -6,6 +6,7 @@ import styles from './Member.css';
 import ContentWrapper from '../components/ContentWrapper';
 import MarkdownContent from '../components/MarkdownContent';
 import FaceImage from '../components/FaceImage';
+import withMetadata from '../util/withMetadata';
 
 const Member = ({ page }) => (
   <ContentWrapper style={{ padding: '1rem' }}>
@@ -21,4 +22,4 @@ const Member = ({ page }) => (
   </ContentWrapper>
 );
 
-export default getRouteProps(withStyles(styles)(Member));
+export default withMetadata(getRouteProps(withStyles(styles)(Member)));

@@ -5,6 +5,7 @@ import remarkFrontMatter from 'remark-frontmatter';
 import remarkInlineLinks from 'remark-inline-links';
 import remarkToRehype from 'remark-rehype';
 import rehypeRaw from 'rehype-raw';
+import hastToString from 'hast-util-to-string';
 import visit from 'unist-util-visit';
 import removePosition from 'unist-util-remove-position';
 import YAML from 'js-yaml';
@@ -32,7 +33,16 @@ async function getJSONFromFile(filePath) {
   }
 
   // MDAST to HAST
-  Object.assign(config, { content: removePosition(await remark.run(ast), true) });
+  const contentHast = removePosition(await remark.run(ast), true);
+  const contentText = hastToString(contentHast).replace(/\n/g, '');
+  Object.assign(
+    config,
+    {
+      content: contentHast,
+      description: contentText.length <= 140 ? contentText : `${contentText.slice(0, 140)}...`,
+    },
+    config,
+  );
 
   // Category
   if (!config.category) {

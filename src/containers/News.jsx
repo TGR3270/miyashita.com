@@ -7,6 +7,7 @@ import NewsHeader from '../components/NewsHeader';
 import ContentWrapper from '../components/ContentWrapper';
 import MarkdownContent from '../components/MarkdownContent';
 import SocialButtonList from '../components/SocialButtonList';
+import withMetadata from '../util/withMetadata';
 
 const News = ({ page }) => (
   <div className={styles.base}>
@@ -18,4 +19,4 @@ const News = ({ page }) => (
   </div>
 );
 
-export default getRouteProps(withStyles(styles)(News));
+export default withMetadata(getRouteProps(withStyles(styles)(News)));

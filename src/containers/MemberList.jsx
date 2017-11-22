@@ -7,6 +7,7 @@ import styles from './MemberList.css';
 import ContentWrapper from '../components/ContentWrapper';
 import HeaderImage from '../components/HeaderImage';
 import MemberCardList from '../components/MemberCardList';
+import withMetadata from '../util/withMetadata';
 
 const MemberList = ({ page: { currentMembers, OBMembers } }) => (
   <div className={styles.base}>
@@ -21,4 +22,4 @@ const MemberList = ({ page: { currentMembers, OBMembers } }) => (
   </div>
 );
 
-export default getRouteProps(withStyles(styles)(MemberList));
+export default withMetadata(getRouteProps(withStyles(styles)(MemberList)));

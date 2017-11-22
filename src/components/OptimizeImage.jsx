@@ -2,19 +2,33 @@ import React from 'react';
 import url from 'url';
 
 class GPhotosURL {
-  constructor(imgUrl, width, height) {
-    const parsed = url.parse(imgUrl, true);
+  constructor(opts) {
+    const parsed = url.parse(opts.src, true);
     const [pathname, paramStr = ''] = parsed.pathname.split('=');
 
     this.params = this.parseParams(paramStr);
     this.parsed = parsed;
     this.parsed.pathname = pathname;
-    if (typeof width === 'number') {
-      this.width = width;
-    }
-    if (typeof height === 'number') {
-      this.height = height;
-    }
+
+    const size = this.calcSize({
+      ...opts,
+      width: this.params.w || this.params.s,
+      height: this.params.h || this.params.s,
+    });
+    this.width = size.width;
+    this.height = size.height;
+  }
+
+  calcSize({ width: baseWidth, height: baseHeight, maxWidth, maxHeight, minWidth, minHeight }) {
+    const width =
+      typeof width === 'number'
+        ? Math.min(Math.max(baseWidth, minWidth || 0), maxWidth || Number.MAX_SAFE_INTEGER)
+        : maxWidth || undefined;
+    const height =
+      typeof height === 'number'
+        ? Math.min(Math.max(baseHeight, minHeight || 0), maxHeight || Number.MAX_SAFE_INTEGER)
+        : minHeight || undefined;
+    return { width, height };
   }
 
   get jpeg() {
@@ -67,7 +81,8 @@ class GPhotosURL {
 }
 
 class YoutubeThumbnailURL {
-  constructor(imgUrl, width, height) {
+  constructor(opts) {
+    const { src: imgUrl, width, height } = opts;
     const parsed = url.parse(imgUrl, true);
     const [id] = parsed.pathname.split('/').slice(-2, -1);
 
@@ -95,28 +110,46 @@ class YoutubeThumbnailURL {
   }
 }
 
-function generateOptimizeImageUrl(imgUrl, width, height) {
-  if (/googleusercontent\.com/.test(imgUrl)) {
-    const gurl = new GPhotosURL(imgUrl, width, height);
+function generateOptimizeImageUrl(opts) {
+  if (/googleusercontent\.com/.test(opts.src)) {
+    const gurl = new GPhotosURL(opts);
     return {
       raw: gurl.jpeg,
       webp: gurl.webp,
     };
   }
-  if (/youtube\.com/.test(imgUrl)) {
-    const yurl = new YoutubeThumbnailURL(imgUrl, width, height);
+  if (/youtube\.com/.test(opts.src)) {
+    const yurl = new YoutubeThumbnailURL(opts);
     return {
       raw: yurl.jpeg,
       webp: yurl.webp,
     };
   }
   return {
-    raw: imgUrl,
+    raw: opts.src,
   };
 }
 
-const OptimizeImage = ({ src, width, height, alt, ...rest }) => {
-  const { raw, webp } = generateOptimizeImageUrl(src, width, height);
+const OptimizeImage = ({
+  src,
+  width: baseWidth,
+  height: baseHeight,
+  maxWidth,
+  maxHeight,
+  minWidth,
+  minHeight,
+  alt,
+  ...rest
+}) => {
+  const { raw, webp } = generateOptimizeImageUrl({
+    src,
+    width: baseWidth,
+    height: baseHeight,
+    maxWidth,
+    maxHeight,
+    minWidth,
+    minHeight,
+  });
 
   return (
     <picture>

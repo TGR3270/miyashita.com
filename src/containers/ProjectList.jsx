@@ -6,6 +6,7 @@ import styles from './ProjectList.css';
 import HeaderImage from '../components/HeaderImage';
 import ContentWrapper from '../components/ContentWrapper';
 import ThumbnailCardList from '../components/ThumbnailCardList';
+import withMetadata from '../util/withMetadata';
 
 const ProjectList = ({ page: { projectsGroupByCategories } }) => {
   const categories = Object.keys(projectsGroupByCategories).sort((a, b) => a.localeCompare(b));
@@ -29,4 +30,4 @@ const ProjectList = ({ page: { projectsGroupByCategories } }) => {
   );
 };
 
-export default getRouteProps(withStyles(styles)(ProjectList));
+export default withMetadata(getRouteProps(withStyles(styles)(ProjectList)));

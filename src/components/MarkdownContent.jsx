@@ -8,12 +8,14 @@ import AwesomeIframe from './AwesomeIframe';
 import OptimizeImage from './OptimizeImage';
 import Link from './Link';
 
+const MarkdownImage = props => <OptimizeImage maxWidth={512} {...props} />;
+
 const processor = unified()
   .use(reactRenderer, {
     createElement: React.createElement,
     components: {
       iframe: AwesomeIframe,
-      img: OptimizeImage,
+      img: MarkdownImage,
       a: Link,
     },
   })

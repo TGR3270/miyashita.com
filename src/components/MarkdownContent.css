@@ -42,6 +42,12 @@
 
   & p {
     padding: 0.5rem 0;
+    & > img,
+    & > picture > img {
+      display: block;
+      max-width: 100%;
+      margin: auto;
+    }
   }
 
   & hr {
@@ -60,11 +66,5 @@
     & > p {
       padding: 0;
     }
-  }
-
-  & img {
-    display: block;
-    max-width: 100%;
-    margin: auto;
   }
 }

@@ -10,6 +10,7 @@ import HeaderImage from '../components/HeaderImage';
 import ContentWrapper from '../components/ContentWrapper';
 import ThumbnailCardList from '../components/ThumbnailCardList';
 import MemberCardList from '../components/MemberCardList';
+import withMetadata from '../util/withMetadata';
 
 const Home = ({ page: { news, projects, members } }) => (
   <div className={styles.base}>
@@ -46,4 +47,4 @@ const Home = ({ page: { news, projects, members } }) => (
     </div>
   </div>
 );
-export default getRouteProps(withStyles(styles)(Home));
+export default withMetadata(getRouteProps(withStyles(styles)(Home)));

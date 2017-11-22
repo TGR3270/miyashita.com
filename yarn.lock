@@ -1537,7 +1537,7 @@ classnames@^2.0.0, classnames@^2.2.5:
   version "2.2.5"
   resolved "https://registry.yarnpkg.com/classnames/-/classnames-2.2.5.tgz#fb3801d453467649ef3603c7d61a02bd129bde6d"
 
-clean-css@4.1.x:
+clean-css@4.1.x, clean-css@^4.0.12:
   version "4.1.9"
   resolved "https://registry.yarnpkg.com/clean-css/-/clean-css-4.1.9.tgz#35cee8ae7687a49b98034f70de00c4edd3826301"
   dependencies:
@@ -1663,7 +1663,7 @@ combined-stream@^1.0.5, combined-stream@~1.0.5:
   dependencies:
     delayed-stream "~1.0.0"
 
-comma-separated-tokens@^1.0.0:
+comma-separated-tokens@^1.0.0, comma-separated-tokens@^1.0.2:
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/comma-separated-tokens/-/comma-separated-tokens-1.0.4.tgz#72083e58d4a462f01866f6617f4d98a3cd3b8a46"
   dependencies:
@@ -2921,6 +2921,10 @@ flat-cache@^1.2.1:
     graceful-fs "^4.1.2"
     write "^0.2.1"
 
+flatmap@0.0.3:
+  version "0.0.3"
+  resolved "https://registry.yarnpkg.com/flatmap/-/flatmap-0.0.3.tgz#1f18a4d938152d495965f9c958d923ab2dd669b4"
+
 flatten@^1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/flatten/-/flatten-1.0.2.tgz#dae46a9d78fbe25292258cc1e780a41d95c03782"
@@ -3249,6 +3253,12 @@ hast-to-hyperscript@^3.0.0:
     trim "0.0.1"
     unist-util-is "^2.0.0"
 
+hast-util-embedded@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/hast-util-embedded/-/hast-util-embedded-1.0.0.tgz#49d6114b40933a9d0bd708a3b012378f2cd6e86c"
+  dependencies:
+    hast-util-is-element "^1.0.0"
+
 hast-util-from-parse5@^2.0.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/hast-util-from-parse5/-/hast-util-from-parse5-2.1.0.tgz#f6123d83d3689630b097e13e430d16d9d1bd8884"
@@ -3257,6 +3267,53 @@ hast-util-from-parse5@^2.0.0:
     hastscript "^3.0.0"
     property-information "^3.1.0"
     vfile-location "^2.0.0"
+
+hast-util-from-string@^1.0.0:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/hast-util-from-string/-/hast-util-from-string-1.0.1.tgz#f522812c36bb8ec447528548d126767db311fad1"
+
+hast-util-has-property@^1.0.0:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/hast-util-has-property/-/hast-util-has-property-1.0.1.tgz#ac08c40bcbf27b80a85aaae91e4f6250a53e802f"
+
+hast-util-is-body-ok-link@^1.0.0:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/hast-util-is-body-ok-link/-/hast-util-is-body-ok-link-1.0.1.tgz#f5d8893f4f21fa1ae51c059ac29abdbc8e6e6046"
+  dependencies:
+    hast-util-has-property "^1.0.0"
+    hast-util-is-element "^1.0.0"
+
+hast-util-is-conditional-comment@^1.0.0:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/hast-util-is-conditional-comment/-/hast-util-is-conditional-comment-1.0.1.tgz#266d3561fb7ecdd28aa2733fdd6a7837a543759e"
+
+hast-util-is-css-link@^1.0.0:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/hast-util-is-css-link/-/hast-util-is-css-link-1.0.1.tgz#7b41fafd2ce6c2a0da1a2d1a11413d4a1f5d9923"
+  dependencies:
+    trim "^0.0.1"
+
+hast-util-is-css-style@^1.0.0:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/hast-util-is-css-style/-/hast-util-is-css-style-1.0.1.tgz#311bb4d9f8a1b98c2c67f8d58ca8498dc1cc03b2"
+  dependencies:
+    trim "0.0.1"
+
+hast-util-is-element@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/hast-util-is-element/-/hast-util-is-element-1.0.0.tgz#3f7216978b2ae14d98749878782675f33be3ce00"
+
+hast-util-is-event-handler@^1.0.0:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/hast-util-is-event-handler/-/hast-util-is-event-handler-1.0.1.tgz#1e03c369b37f070b13c7a53da5eb23aba2b50340"
+
+hast-util-is-javascript@^1.0.0:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/hast-util-is-javascript/-/hast-util-is-javascript-1.0.1.tgz#32a1c0a8ca191cce33d0ce78e6bda77c9109e084"
+  dependencies:
+    hast-util-has-property "^1.0.0"
+    hast-util-is-element "^1.0.0"
+    trim "0.0.1"
 
 hast-util-parse-selector@^2.0.0:
   version "2.1.0"
@@ -3283,6 +3340,10 @@ hast-util-to-parse5@^2.0.0:
     web-namespaces "^1.0.0"
     xtend "^4.0.1"
     zwitch "^1.0.0"
+
+hast-util-to-string@^1.0.0, hast-util-to-string@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/hast-util-to-string/-/hast-util-to-string-1.0.1.tgz#b28055cdca012d3c8fd048757c8483d0de0d002c"
 
 hastscript@^3.0.0:
   version "3.1.0"
@@ -3395,6 +3456,10 @@ html-minifier@^3.2.3:
     relateurl "0.2.x"
     uglify-js "3.1.x"
 
+html-url-attributes@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/html-url-attributes/-/html-url-attributes-1.0.0.tgz#7b4c8e95a95fde993a375be1a162bb2cb058e7c2"
+
 html-void-elements@^1.0.1:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/html-void-elements/-/html-void-elements-1.0.2.tgz#9d22e0ca32acc95b3f45b8d5b4f6fbdc05affd55"
@@ -3409,6 +3474,10 @@ html-webpack-plugin@^2.30.1:
     lodash "^4.17.3"
     pretty-error "^2.0.2"
     toposort "^1.0.0"
+
+html-whitespace-sensitive-tag-names@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/html-whitespace-sensitive-tag-names/-/html-whitespace-sensitive-tag-names-1.0.0.tgz#fd6ed3a3d631ce29341aefe26a8fea720d3adfa7"
 
 htmlparser2@~3.3.0:
   version "3.3.0"
@@ -6082,6 +6151,159 @@ regjsparser@^0.1.4:
   dependencies:
     jsesc "~0.5.0"
 
+rehype-minify-attribute-whitespace@^1.0.0:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/rehype-minify-attribute-whitespace/-/rehype-minify-attribute-whitespace-1.0.1.tgz#011e35a31dcd62fb031669422bfdee3f52dad2a3"
+  dependencies:
+    hast-util-has-property "^1.0.0"
+    hast-util-is-element "^1.0.0"
+    hast-util-is-event-handler "^1.0.0"
+    trim "^0.0.1"
+    unist-util-visit "^1.0.0"
+    x-is-array "^0.1.0"
+
+rehype-minify-css-style@^1.0.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/rehype-minify-css-style/-/rehype-minify-css-style-1.1.0.tgz#ca774822aeb1fb07b43d78417282d3519c874ed0"
+  dependencies:
+    clean-css "^4.0.12"
+    hast-util-from-string "^1.0.0"
+    hast-util-is-css-style "^1.0.0"
+    hast-util-to-string "^1.0.0"
+    unist-util-visit "^1.0.0"
+
+rehype-minify-enumerated-attribute@^1.0.0:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/rehype-minify-enumerated-attribute/-/rehype-minify-enumerated-attribute-1.0.1.tgz#d6c74282aeaa4877d81f715f6320c5435bc7c318"
+  dependencies:
+    hast-util-has-property "^1.0.0"
+    hast-util-is-element "^1.0.0"
+    unist-util-visit "^1.1.0"
+
+rehype-minify-event-handler@^1.0.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/rehype-minify-event-handler/-/rehype-minify-event-handler-1.1.0.tgz#6f4b282176a052452b4cba993ada1c6395cdaa73"
+  dependencies:
+    hast-util-has-property "^1.0.0"
+    hast-util-is-event-handler "^1.0.0"
+    trim "0.0.1"
+    uglify-js "^3.0.18"
+    unist-util-visit "^1.0.0"
+
+rehype-minify-javascript-script@^1.0.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/rehype-minify-javascript-script/-/rehype-minify-javascript-script-1.1.0.tgz#b2cf72dbbd3a3332a5325aa73f2ff8168c12f184"
+  dependencies:
+    hast-util-from-string "^1.0.0"
+    hast-util-has-property "^1.0.0"
+    hast-util-is-javascript "^1.0.0"
+    hast-util-to-string "^1.0.0"
+    uglify-js "^3.0.18"
+    unist-util-visit "^1.0.0"
+
+rehype-minify-javascript-url@^1.0.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/rehype-minify-javascript-url/-/rehype-minify-javascript-url-1.1.0.tgz#1721557277a89f7163d49be59901fd372c8f1d7e"
+  dependencies:
+    hast-util-has-property "^1.0.0"
+    hast-util-is-element "^1.0.0"
+    html-url-attributes "^1.0.0"
+    trim "0.0.1"
+    uglify-js "^3.0.18"
+    unist-util-visit "^1.0.0"
+
+rehype-minify-json-script@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/rehype-minify-json-script/-/rehype-minify-json-script-1.0.0.tgz#e132264727659f1e9b7ddc2087dfa30d589738d4"
+  dependencies:
+    hast-util-from-string "^1.0.0"
+    hast-util-is-element "^1.0.0"
+    hast-util-to-string "^1.0.0"
+    unist-util-visit "^1.0.0"
+
+rehype-minify-media-attribute@^1.0.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/rehype-minify-media-attribute/-/rehype-minify-media-attribute-1.1.0.tgz#165cde58013a4bedc2e0d662236904ee7dc2f3f6"
+  dependencies:
+    clean-css "^4.0.12"
+    hast-util-is-element "^1.0.0"
+    unist-util-visit "^1.0.0"
+
+rehype-minify-meta-color@^1.0.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/rehype-minify-meta-color/-/rehype-minify-meta-color-1.1.0.tgz#fabe95e3b94dec1dbcde85a5331e444898e784b2"
+  dependencies:
+    clean-css "^4.0.12"
+    hast-util-has-property "^1.0.0"
+    hast-util-is-element "^1.0.0"
+    unist-util-visit "^1.0.0"
+
+rehype-minify-meta-content@^1.0.0:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/rehype-minify-meta-content/-/rehype-minify-meta-content-1.0.1.tgz#6706c0d4ea2a77d285aa82337607ada15befed5f"
+  dependencies:
+    comma-separated-tokens "^1.0.2"
+    hast-util-has-property "^1.0.0"
+    hast-util-is-element "^1.0.0"
+    unist-util-visit "^1.0.0"
+
+rehype-minify-style-attribute@^1.0.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/rehype-minify-style-attribute/-/rehype-minify-style-attribute-1.1.0.tgz#33fa5df988fd2224845b89b65b395d039d8aff4a"
+  dependencies:
+    clean-css "^4.0.12"
+    hast-util-has-property "^1.0.0"
+    unist-util-visit "^1.0.0"
+
+rehype-minify-whitespace@^2.0.0:
+  version "2.0.3"
+  resolved "https://registry.yarnpkg.com/rehype-minify-whitespace/-/rehype-minify-whitespace-2.0.3.tgz#9aef3b73d0dfbcf890844d10d8f45fd5bdf145ec"
+  dependencies:
+    collapse-white-space "^1.0.0"
+    hast-util-embedded "^1.0.0"
+    hast-util-has-property "^1.0.0"
+    hast-util-is-body-ok-link "^1.0.0"
+    hast-util-is-element "^1.0.0"
+    html-whitespace-sensitive-tag-names "^1.0.0"
+    unist-util-is "^2.0.0"
+    unist-util-modify-children "^1.0.0"
+
+rehype-normalize-attribute-value-case@^1.0.0:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/rehype-normalize-attribute-value-case/-/rehype-normalize-attribute-value-case-1.0.1.tgz#00e1c91b0ed8e70a105a63f2c1e54fb570173571"
+  dependencies:
+    hast-util-has-property "^1.0.0"
+    hast-util-is-element "^1.0.0"
+    unist-util-visit "^1.1.0"
+    x-is-array "^0.1.0"
+
+rehype-preset-minify@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/rehype-preset-minify/-/rehype-preset-minify-2.0.0.tgz#21ee2eb407134e42ff36773369d63fadb7d74444"
+  dependencies:
+    rehype-minify-attribute-whitespace "^1.0.0"
+    rehype-minify-css-style "^1.0.0"
+    rehype-minify-enumerated-attribute "^1.0.0"
+    rehype-minify-event-handler "^1.0.0"
+    rehype-minify-javascript-script "^1.0.0"
+    rehype-minify-javascript-url "^1.0.0"
+    rehype-minify-json-script "^1.0.0"
+    rehype-minify-media-attribute "^1.0.0"
+    rehype-minify-meta-color "^1.0.0"
+    rehype-minify-meta-content "^1.0.0"
+    rehype-minify-style-attribute "^1.0.0"
+    rehype-minify-whitespace "^2.0.0"
+    rehype-normalize-attribute-value-case "^1.0.0"
+    rehype-remove-comments "^2.0.0"
+    rehype-remove-duplicate-attribute-values "^1.0.0"
+    rehype-remove-empty-attribute "^1.0.0"
+    rehype-remove-external-script-content "^1.0.0"
+    rehype-remove-meta-http-equiv "^1.0.0"
+    rehype-remove-script-type-javascript "^1.0.0"
+    rehype-remove-style-type-css "^1.0.0"
+    rehype-sort-attribute-values "^1.0.0"
+    rehype-sort-attributes "^1.0.0"
+
 rehype-raw@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/rehype-raw/-/rehype-raw-2.0.0.tgz#5637a9fceef34800fd7c57ca32fd9d5927fd2aaa"
@@ -6094,6 +6316,79 @@ rehype-react@^3.0.1:
   dependencies:
     has "^1.0.1"
     hast-to-hyperscript "^3.0.0"
+
+rehype-remove-comments@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/rehype-remove-comments/-/rehype-remove-comments-2.0.0.tgz#7fd6e94df926fb7f4c24fe8cd8804471c7b936ed"
+  dependencies:
+    hast-util-is-conditional-comment "^1.0.0"
+    unist-util-filter "^0.2.0"
+
+rehype-remove-duplicate-attribute-values@^1.0.0:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/rehype-remove-duplicate-attribute-values/-/rehype-remove-duplicate-attribute-values-1.0.1.tgz#7d06c7faafe8541002ee06b4a39a7810156d925a"
+  dependencies:
+    hast-util-is-element "^1.0.0"
+    uniq "^1.0.1"
+    unist-util-visit "^1.0.0"
+    x-is-array "^0.1.0"
+
+rehype-remove-empty-attribute@^1.0.0:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/rehype-remove-empty-attribute/-/rehype-remove-empty-attribute-1.0.1.tgz#9135b293d6969e6cc9c88041b196c59543cf65ae"
+  dependencies:
+    hast-util-is-element "^1.0.0"
+    hast-util-is-event-handler "^1.0.0"
+    unist-util-visit "^1.0.0"
+    x-is-array "^0.1.0"
+
+rehype-remove-external-script-content@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/rehype-remove-external-script-content/-/rehype-remove-external-script-content-1.0.0.tgz#0608815e14161bc959146469d9fd98b4d3544bcd"
+  dependencies:
+    hast-util-has-property "^1.0.0"
+    hast-util-is-javascript "^1.0.0"
+    unist-util-visit "^1.0.0"
+
+rehype-remove-meta-http-equiv@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/rehype-remove-meta-http-equiv/-/rehype-remove-meta-http-equiv-1.0.0.tgz#e348a4d2bdd5186ceae1fc3e41df450d461e1e3e"
+  dependencies:
+    hast-util-has-property "^1.0.0"
+    hast-util-is-element "^1.0.0"
+    space-separated-tokens "^1.0.0"
+    unist-util-visit "^1.0.0"
+
+rehype-remove-script-type-javascript@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/rehype-remove-script-type-javascript/-/rehype-remove-script-type-javascript-1.0.0.tgz#a924541f1333bcdb28fd40fc9550d26524f6ec69"
+  dependencies:
+    hast-util-is-javascript "^1.0.0"
+    unist-util-visit "^1.0.0"
+
+rehype-remove-style-type-css@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/rehype-remove-style-type-css/-/rehype-remove-style-type-css-1.0.0.tgz#0b5c6ac428fc0fff643380889f54a74969cd2b34"
+  dependencies:
+    hast-util-is-css-link "^1.0.0"
+    hast-util-is-css-style "^1.0.0"
+    unist-util-visit "^1.0.0"
+
+rehype-sort-attribute-values@^1.0.0:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/rehype-sort-attribute-values/-/rehype-sort-attribute-values-1.0.1.tgz#e8c920f64c8eb7160bc0af55ce17a9fe9b8f3cc3"
+  dependencies:
+    hast-util-has-property "^1.0.0"
+    hast-util-is-element "^1.0.0"
+    unist-util-visit "^1.1.0"
+    x-is-array "^0.1.0"
+
+rehype-sort-attributes@^1.0.0:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/rehype-sort-attributes/-/rehype-sort-attributes-1.0.1.tgz#b70a631025f1d43cd85c0ec99f37e0452a0e24cf"
+  dependencies:
+    hast-util-has-property "^1.0.0"
+    unist-util-visit "^1.0.0"
 
 relateurl@0.2.x:
   version "0.2.7"
@@ -6968,7 +7263,7 @@ trim-trailing-lines@^1.0.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/trim-trailing-lines/-/trim-trailing-lines-1.1.0.tgz#7aefbb7808df9d669f6da2e438cac8c46ada7684"
 
-trim@0.0.1:
+trim@0.0.1, trim@^0.0.1:
   version "0.0.1"
   resolved "https://registry.yarnpkg.com/trim/-/trim-0.0.1.tgz#5858547f6b290757ee95cccc666fb50084c460dd"
 
@@ -7037,6 +7332,13 @@ uglify-js@^2.6, uglify-js@^2.8.29:
   optionalDependencies:
     uglify-to-browserify "~1.0.0"
 
+uglify-js@^3.0.18:
+  version "3.1.10"
+  resolved "https://registry.yarnpkg.com/uglify-js/-/uglify-js-3.1.10.tgz#c4a5f9b5c6276b40cb971c1d97c9eeb26af9509c"
+  dependencies:
+    commander "~2.11.0"
+    source-map "~0.6.1"
+
 uglify-to-browserify@~1.0.0:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/uglify-to-browserify/-/uglify-to-browserify-1.0.2.tgz#6e0924d6bda6b5afe349e39a6d632850a0f882b7"
@@ -7102,9 +7404,20 @@ unist-builder@^1.0.1:
   dependencies:
     object-assign "^4.1.0"
 
+unist-util-filter@^0.2.0:
+  version "0.2.1"
+  resolved "https://registry.yarnpkg.com/unist-util-filter/-/unist-util-filter-0.2.1.tgz#e2f7876828903a6a9308e362051f86b14f35b545"
+  dependencies:
+    flatmap "0.0.3"
+    unist-util-is "^1.0.0"
+
 unist-util-generated@^1.1.0:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/unist-util-generated/-/unist-util-generated-1.1.1.tgz#99f16c78959ac854dee7c615c291924c8bf4de7f"
+
+unist-util-is@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/unist-util-is/-/unist-util-is-1.0.0.tgz#4c7b3c5c0f6aa963640056fe4af7b5fcfdbb8ef0"
 
 unist-util-is@^2.0.0:
   version "2.1.1"
