@@ -12,26 +12,3 @@
     margin-top: 0;
   }
 }
-
-.header-wrapper {
-  margin: 1rem;
-}
-
-.header {
-  margin: 0;
-  display: inline-block;
-}
-
-.more {
-  display: inline-flex;
-  align-items: center;
-  font-size: 0.75rem;
-  margin: 0 0.5em;
-  padding: 0 0.25em;
-  font-weight: normal;
-  border-bottom: solid 1px var(--gray);
-
-  &:hover {
-    opacity: 0.5;
-  }
-}

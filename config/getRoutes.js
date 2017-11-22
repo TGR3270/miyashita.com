@@ -9,6 +9,49 @@ const filePaths = {
   articles: path.resolve(__dirname, '../articles/articles/**/*.md'),
 };
 
+// https://github.com/nozzle/react-static/wiki/How-to:-Pagination
+function makePageRoutes(items, pageSize, route) {
+  const itemsCopy = [...items]; // Make a copy of the items
+  const pages = []; // Make an array for all of the different pages
+
+  while (itemsCopy.length) {
+    // Splice out all of the items into separate pages using a set pageSize
+    pages.push(itemsCopy.splice(0, pageSize));
+  }
+
+  const maxCount = pages.length;
+  const firstPage = pages.shift();
+
+  const routes = [
+    {
+      ...route,
+      path: route.path,
+      getProps: async () => ({
+        page: {
+          items: firstPage,
+          count: 1,
+          maxCount,
+          basePath: route.path,
+        },
+      }),
+    },
+    ...pages.map((page, i) => ({
+      ...route,
+      path: `${route.path}/page/${i + 2}`,
+      getProps: async () => ({
+        page: {
+          items: page,
+          count: i + 2,
+          maxCount,
+          basePath: route.path,
+        },
+      }),
+    })),
+  ];
+
+  return routes;
+}
+
 async function getRoutes() {
   const newsList = await getArticleList(filePaths.news, {
     permalink: '/news/:year/:month/:day/:title/',
@@ -52,6 +95,10 @@ async function getRoutes() {
         },
       }),
     },
+    ...makePageRoutes(newsList.map(i => ({ ...i, content: null })), 10, {
+      path: '/news',
+      component: 'src/containers/NewsList',
+    }),
     {
       path: '/members',
       component: 'src/containers/MemberList',

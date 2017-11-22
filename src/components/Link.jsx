@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link, PrefetchWhenSeen as _PrefetchWhenSeen } from 'react-static';
+import { withRouter } from 'react-router';
 
 class PrefetchWhenSeen extends _PrefetchWhenSeen {
   render() {
@@ -12,20 +13,39 @@ class PrefetchWhenSeen extends _PrefetchWhenSeen {
   }
 }
 
-const LinkWrapper = props => {
-  if (!props.to) {
+class LinkWrapper extends React.Component {
+  constructor(props) {
+    super(props);
+    this.onClick = this.onClick.bind(this);
+  }
+
+  onClick() {
+    this.props.history.push(this.props.to);
+  }
+
+  render() {
+    const props = this.props;
+
+    if (!props.to) {
+      return (
+        <a target="_blank" {...props} rel="noopener noreferrer">
+          {props.children}
+        </a>
+      );
+    }
+
+    const { to, ...rest } = props;
     return (
-      <a target="_blank" {...props} rel="noopener noreferrer">
-        {props.children}
-      </a>
+      <PrefetchWhenSeen
+        {...rest}
+        style={{ ...rest.style, cursor: 'pointer' }}
+        onClick={this.onClick}
+        path={to}
+      >
+        <Link to={to}>{props.children}</Link>
+      </PrefetchWhenSeen>
     );
   }
-  const { to, ...rest } = props;
-  return (
-    <PrefetchWhenSeen {...rest} path={to}>
-      <Link to={to}>{props.children}</Link>
-    </PrefetchWhenSeen>
-  );
-};
+}
 
-export default LinkWrapper;
+export default withRouter(LinkWrapper);
