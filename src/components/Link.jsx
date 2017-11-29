@@ -19,8 +19,10 @@ class LinkWrapper extends React.Component {
     this.onClick = this.onClick.bind(this);
   }
 
-  onClick() {
+  onClick(ev) {
     this.props.history.push(this.props.to);
+    ev.preventDefault();
+    return false;
   }
 
   render() {
@@ -36,13 +38,10 @@ class LinkWrapper extends React.Component {
 
     const { to, ...rest } = props;
     return (
-      <PrefetchWhenSeen
-        {...rest}
-        style={{ ...rest.style, cursor: 'pointer' }}
-        onClick={this.onClick}
-        path={to}
-      >
-        <Link to={to}>{props.children}</Link>
+      <PrefetchWhenSeen {...rest} style={{ ...rest.style, cursor: 'pointer' }} path={to}>
+        <Link to={to} onClick={this.onClick}>
+          {props.children}
+        </Link>
       </PrefetchWhenSeen>
     );
   }
