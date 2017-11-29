@@ -22,7 +22,9 @@ const remark = Remark()
 
 async function getJSONFromFile(filePath) {
   const fileName = path.basename(filePath);
-  const config = {};
+  const config = {
+    filePath: path.relative(path.resolve(__dirname, '../../'), filePath),
+  };
 
   const ast = remark.parse(await fs.readFile(filePath, 'utf8'));
 
@@ -50,7 +52,12 @@ async function getJSONFromFile(filePath) {
   }
   // Date
   const dateStr = config.date || (fileName.match(/^(\d+[/-]\d+[/-]\d+)/) || [])[1];
-  const date = moment(dateStr, ['YYYY-MM-DD HH:mm Z', 'YYYY-MM-DD HH:mm', 'YYYY-MM-DD']);
+  const date = moment(dateStr, [
+    'YYYY-MM-DD HH:mm Z',
+    'YYYY-MM-DD HH:mm',
+    'YYYY-MM-DD',
+    moment.ISO_8601,
+  ]);
   Object.assign(config, {
     date: date.toDate(),
     year: date.year(),

@@ -25,7 +25,7 @@ function makePageRoutes(items, pageSize, route) {
   const routes = [
     {
       ...route,
-      path: route.path,
+      path: `${route.path}/`,
       getProps: async () => ({
         page: {
           items: firstPage,
@@ -37,7 +37,7 @@ function makePageRoutes(items, pageSize, route) {
     },
     ...pages.map((page, i) => ({
       ...route,
-      path: `${route.path}/page/${i + 2}`,
+      path: `${route.path}/page/${i + 2}/`,
       getProps: async () => ({
         page: {
           items: page,
@@ -56,7 +56,9 @@ async function getRoutes() {
   const newsList = await getArticleList(filePaths.news, {
     permalink: '/news/:year/:month/:day/:title/',
   });
-  const projectList = await getArticleList(filePaths.projects, { permalink: '/projects/:title/' });
+  const projectList = await getArticleList(filePaths.projects, {
+    permalink: '/projects/:title/',
+  });
   const memberList = await getArticleList(filePaths.members, { permalink: '/members/:title/' });
   const othersList = await getArticleList(filePaths.articles);
 
@@ -65,20 +67,20 @@ async function getRoutes() {
   for (const category of projectCategories) {
     projectListGroupByCategories[category] = projectList
       .filter(p => p.category === category)
-      .map(i => ({ ...i, date: null, content: null }));
+      .map(i => ({ ...i, date: undefined, content: undefined, filePath: undefined }));
   }
 
   const currentMemberList = orderBy(
     memberList.filter(i => i.category !== '99_OB'),
     ['category', 'school_year', 'title'],
     ['asc', 'desc', 'asc'],
-  ).map(i => ({ ...i, content: null }));
+  ).map(i => ({ ...i, content: undefined, filePath: undefined }));
 
   const OBMemberList = orderBy(
     memberList.filter(i => i.category === '99_OB'),
     ['year_of_graduation', 'title'],
     ['desc', 'asc'],
-  ).map(i => ({ ...i, content: null }));
+  ).map(i => ({ ...i, content: undefined, filePath: undefined }));
 
   return [
     {
@@ -87,20 +89,20 @@ async function getRoutes() {
       getProps: () => ({
         page: {
           title: '',
-          news: newsList.slice(0, 10).map(i => ({ ...i, content: null })),
+          news: newsList.slice(0, 10).map(i => ({ ...i, content: undefined, filePath: undefined })),
           projects: projectList
             .filter(i => i.visibleOnTopPage)
-            .map(i => ({ ...i, date: null, content: null })),
+            .map(i => ({ ...i, date: undefined, content: undefined, filePath: undefined })),
           members: currentMemberList,
         },
       }),
     },
-    ...makePageRoutes(newsList.map(i => ({ ...i, content: null })), 10, {
-      path: '/news',
+    ...makePageRoutes(newsList.map(i => ({ ...i, content: undefined, filePath: undefined })), 10, {
+      path: '/news/',
       component: 'src/containers/NewsList',
     }),
     {
-      path: '/members',
+      path: '/members/',
       component: 'src/containers/MemberList',
       getProps: () => ({
         page: {
@@ -111,7 +113,7 @@ async function getRoutes() {
       }),
     },
     {
-      path: '/projects',
+      path: '/projects/',
       component: 'src/containers/ProjectList',
       getProps: () => ({
         page: {

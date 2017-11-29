@@ -1,5 +1,5 @@
 ---
-title: 4-Danmension：デュアル断面図による４次元空間の表現
+title: 4-Danmension：デュアル断面図による4次元空間の表現
 _id: 829
 comment: false
 categories:
